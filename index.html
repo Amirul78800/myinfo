@@ -1,3 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/myinfo/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amirul Azhajzul | Systems & Infrastructure Engineer</title>
+    <meta name="description" content="Systems & Infrastructure Integration Engineer specializing in Docker, TrueNAS, Cloudflare Tunnels, and IoT/DAQ pipelines.">
+    
+    <!-- EMBEDDED CSS - NO SEPARATE FILE NEEDED -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1e293b; background-color: #ffffff; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Navigation */
+        .navbar { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; padding: 1rem 0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #0f172a; }
+        .logo span { color: #2563eb; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: #475569; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #2563eb; }
+        
+        /* Blueprint Grid */
+        .blueprint-grid { background-color: #f8fafc; background-image: linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px); background-size: 40px 40px; }
+        
+        /* Hero */
+        .hero { min-height: 85vh; display: flex; align-items: center; padding: 4rem 0; }
+        .hero-content { max-width: 800px; }
+        .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .pulse { width: 8px; height: 8px; background: #3b82f6; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: #0f172a; }
+        .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #64748b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .subtitle { font-size: 1.25rem; color: #475569; margin-bottom: 2rem; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        
+        /* Buttons */
+        .btn { display: inline-block; padding: 0.875rem 2rem; border-radius: 6px; font-weight: 600; text-decoration: none; transition: all 0.3s; cursor: pointer; }
+        .btn-primary { background: #0f172a; color: white; border: 2px solid #0f172a; }
+        .btn-primary:hover { background: #2563eb; border-color: #2563eb; }
+        .btn-secondary { background: transparent; color: #0f172a; border: 2px solid #cbd5e1; }
+        .btn-secondary:hover { border-color: #2563eb; color: #2563eb; }
+        
+        /* Sections */
+        section { padding: 5rem 0; }
+        .section-header { margin-bottom: 3rem; }
+        .section-label { font-size: 0.875rem; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 700; color: #0f172a; }
+        
+        /* About */
+        .about { background: white; border-top: 1px solid #e2e8f0; }
+        .about-content { max-width: 800px; }
+        .about-content p { font-size: 1.125rem; color: #475569; margin-bottom: 1.5rem; line-height: 1.8; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #f1f5f9; }
+        .stat { text-align: left; }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem; }
+        .stat-label { font-size: 0.875rem; color: #64748b; }
+        
+        /* Projects */
+        .projects { background: #f8fafc; }
+        .projects-grid { display: grid; gap: 2rem; }
+        .project-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .project-card:hover { transform: translateY(-4px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); }
+        .project-card.featured { border: 2px solid #2563eb; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1); }
+        .project-card.featured:hover { box-shadow: 0 8px 30px rgba(37, 99, 235, 0.2); }
+        .project-header { margin-bottom: 1.5rem; }
+        .project-header h3 { font-size: 1.5rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem; }
+        .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .project-tags span { background: #eff6ff; color: #1d4ed8; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        .project-body p { color: #475569; margin-bottom: 1rem; line-height: 1.7; }
+        .project-body strong { color: #0f172a; }
+        
+        /* Project Links */
+        .project-links { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; }
+        .project-links h4 { font-size: 0.875rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .service-list { list-style: none; }
+        .service-list li { margin-bottom: 0.75rem; }
+        .service-link { display: inline-block; color: #2563eb; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; background: #eff6ff; border-radius: 6px; transition: all 0.3s; width: 100%; }
+        .service-link:hover { background: #2563eb; color: white; transform: translateX(5px); }
+        .btn-live { display: inline-block; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s; }
+        .btn-live:hover { background: #1d4ed8; transform: translateY(-2px); }
+        
+        /* Skills */
+        .skills { background: white; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .skill-category { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; }
+        .skill-category h3 { font-size: 1.125rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem; }
+        .skill-category ul { list-style: none; }
+        .skill-category li { color: #475569; padding: 0.5rem 0; border-bottom: 1px solid #f1f5f9; }
+        .skill-category li:last-child { border-bottom: none; }
+        
+        /* Contact */
+        .contact { background: #f8fafc; border-top: 1px solid #e2e8f0; }
+        .contact-content { max-width: 600px; text-align: center; }
+        .contact-content > p { font-size: 1.125rem; color: #475569; margin-bottom: 2rem; }
+        .contact-info { display: grid; gap: 1.5rem; margin-bottom: 2rem; text-align: left; }
+        .contact-item { background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .contact-item strong { display: block; color: #0f172a; margin-bottom: 0.5rem; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .contact-item span, .contact-item a { color: #475569; text-decoration: none; }
+        .contact-item a:hover { color: #2563eb; }
+        .contact-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        
+        /* Social Links */
+        .social-links { display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
+        .social-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; border: 2px solid transparent; }
+        .social-btn.github { background: #0f172a; color: white; }
+        .social-btn.github:hover { background: #1e293b; transform: translateY(-2px); }
+        .social-btn.docker { background: #0db7ed; color: white; }
+        .social-btn.docker:hover { background: #0899c4; transform: translateY(-2px); }
+        .social-btn.linkedin { background: #0077b5; color: white; }
+        .social-btn.linkedin:hover { background: #005885; transform: translateY(-2px); }
+        .social-btn.researchgate { background: #00ccbb; color: white; }
+        .social-btn.researchgate:hover { background: #00a899; transform: translateY(-2px); }
+        .social-btn.email { background: white; color: #0f172a; border-color: #cbd5e1; }
+        .social-btn.email:hover { border-color: #2563eb; color: #2563eb; transform: translateY(-2px); }
+        
+        /* Professional Links */
+        .professional-links { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; }
+        .links-note { font-size: 0.875rem; color: #64748b; margin-bottom: 1rem; text-align: center; }
+        .cred-links { display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; font-size: 0.875rem; }
+        .cred-links a { color: #2563eb; text-decoration: none; transition: color 0.3s; }
+        .cred-links a:hover { color: #1d4ed8; text-decoration: underline; }
+        .separator { color: #cbd5e1; }
+        
+        /* Footer */
+        .footer { background: #0f172a; color: #94a3b8; padding: 2rem 0; text-align: center; }
+        .footer-links { margin-top: 0.5rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: white; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .section-header h2 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .social-links { flex-direction: column; }
+            .social-btn { width: 100%; justify-content: center; }
+            .cred-links { flex-direction: column; gap: 0.75rem; }
+            .separator { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">A<span>.</span>Amirul</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero blueprint-grid">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="pulse"></span>
+                    SYSTEMS & INFRASTRUCTURE ENGINEER | BEM REGISTERED
+                </div>
+                <h1>Bridging Physical Systems<br><span class="gradient-text">and Cloud Infrastructure</span></h1>
+                <p class="subtitle">I design resilient, self-hosted IT infrastructure and automate complex data pipelines. Combining rigorous hardware-software integration with modern DevOps practices (Docker, Zero-Trust, Linux).</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Projects</a>
+                    <a href="https://github.com/Amirul78800" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">01 // ABOUT</div>
+                <h2>The Hybrid Engineer</h2>
+            </div>
+            <div class="about-content">
+                <p>Most IT professionals only look at the software. <strong>I look at the whole system.</strong></p>
+                <p>With an MSc in Engineering and hands-on experience in Data Acquisition (DAQ) and IoT, I understand the physical hardware at the edge. I pair that with modern infrastructure skills—deploying containerized microservices, securing edge ingress via Cloudflare Tunnels, and managing ZFS storage pools—to build systems that are robust from the sensor all the way to the cloud.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Uptime managing production cloud platforms</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">Zero</div>
+                        <div class="stat-label">Open Inbound Ports (Cloudflare Zero-Trust)</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">Efficiency gain via Lean Six Sigma RCA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">02 // PROJECTS</div>
+                <h2>Featured Work</h2>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1: Homelab Infrastructure -->
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <h3>🖥️ Automated Infrastructure & Homelab Operations</h3>
+                        <div class="project-tags">
+                            <span>TrueNAS SCALE</span>
+                            <span>Docker</span>
+                            <span>Cloudflare Tunnels</span>
+                            <span>ZFS</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Challenge:</strong> Needed a resilient, always-on environment to host decoupled microservices without relying on expensive cloud providers or exposing the local network.</p>
+                        <p><strong>Solution:</strong> Architected a multi-service hybrid server ecosystem using TrueNAS SCALE for ZFS storage and Docker for containerized microservices. Implemented Cloudflare Tunnels for secure, Zero-Trust remote ingress without opening inbound firewall ports.</p>
+                        
+                        <div class="project-links">
+                            <h4>Live Services:</h4>
+                            <ul class="service-list">
+                                <li><a href="https://mymedia.idolaboi.dpdns.org/" target="_blank" class="service-link"> Jellyfin Media Server →</a></li>
+                                <li><a href="https://sure.idolaboi.dpdns.org/" target="_blank" class="service-link">💰 SURE Financial Manager →</a></li>
+                                <li><a href="https://erpfortun.my-edu.my/" target="_blank" class="service-link"> ERPNext Demo Instance →</a></li>
+                            </ul>
+                        </div>
+                        
+                        <p><strong>Impact:</strong> Achieved high network availability, continuous data integrity via automated ZFS backups, and secure multi-client access with zero exposed vulnerabilities.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2: Conference Platform -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🎓 ICVSSD Conference Cloud Platform</h3>
+                        <div class="project-tags">
+                            <span>SysAdmin</span>
+                            <span>PostgreSQL</span>
+                            <span>Zero Downtime</span>
+                            <span>LeConfe</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Challenge:</strong> Manage a central cloud event management platform for hundreds of international authors and reviewers with strict data privacy and reliability requirements.</p>
+                        <p><strong>Solution:</strong> Deployed and administered the LeConfe platform, managing secure database privileges, automated backups, and server stability. Coordinated on-ground IT infrastructure during live conference execution.</p>
+                        
+                        <div class="project-links">
+                            <a href="https://conference.my-edu.my" target="_blank" class="btn-live">🔗 Visit Conference Platform →</a>
+                        </div>
+                        
+                        <p><strong>Impact:</strong> Maintained <strong>100% uptime</strong> during critical submission periods and resolved technical access errors rapidly for international academic contributors.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3: REM-VIAN IoT -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>📡 REM-VIAN: IoT Condition Monitoring</h3>
+                        <div class="project-tags">
+                            <span>IoT</span>
+                            <span>Raspberry Pi</span>
+                            <span>C/C++</span>
+                            <span>DAQ</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Challenge:</strong> Traditional machine fault detection requires risky, time-consuming physical inspections on the factory floor.</p>
+                        <p><strong>Solution:</strong> Built a complete sensor-to-cloud telemetry pipeline: MEMS accelerometer → Arduino → Raspberry Pi → cloud dashboard for real-time vibration analysis and predictive maintenance.</p>
+                        <p><strong>Impact:</strong> Enabled remote condition monitoring from any device. <strong>Awarded Bronze at INoDEx 2023.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">03 // SKILLS</div>
+                <h2>Technical Expertise</h2>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🖥️ Infrastructure & Systems</h3>
+                    <ul>
+                        <li>Docker & Docker Compose</li>
+                        <li>TrueNAS SCALE (ZFS)</li>
+                        <li>Linux CLI</li>
+                        <li>PostgreSQL Database</li>
+                        <li>Samba/NFS Storage</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3> Networking & Edge</h3>
+                    <ul>
+                        <li>Cloudflare Tunnels</li>
+                        <li>Zero-Trust Architecture</li>
+                        <li>CGNAT Traversal</li>
+                        <li>Reverse Proxies</li>
+                        <li>TCP/IP Networking</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🔧 IoT & Hardware</h3>
+                    <ul>
+                        <li>Data Acquisition (DAQ)</li>
+                        <li>Arduino & Raspberry Pi</li>
+                        <li>C/C++ Programming</li>
+                        <li>MEMS Sensors</li>
+                        <li>Python Scripting</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>⚙️ Operations & Quality</h3>
+                    <ul>
+                        <li>Lean Six Sigma (Yellow Belt)</li>
+                        <li>Root Cause Analysis (RCA)</li>
+                        <li>FMEA Risk Assessment</li>
+                        <li>Technical SOP Documentation</li>
+                        <li>Project Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -29,7 +373,7 @@
                         <span>🐙</span> GitHub
                     </a>
                     <a href="https://hub.docker.com/u/amirul123" target="_blank" class="social-btn docker">
-                        <span>🐳</span> DockerHub
+                        <span></span> DockerHub
                     </a>
                     <a href="https://www.linkedin.com/in/amirul-azhajzul/" target="_blank" class="social-btn linkedin">
                         <span>💼</span> LinkedIn
@@ -58,6 +402,7 @@
             </div>
         </div>
     </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -70,6 +415,5 @@
             </p>
         </div>
     </footer>
-<!-- END OF FOOTER -->
 </body>
 </html>
