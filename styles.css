@@ -1,149 +1,71 @@
-/* Project Links */
-.project-links {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-}
-
-.project-links h4 {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.service-list {
-    list-style: none;
-}
-
-.service-list li {
-    margin-bottom: 0.75rem;
-}
-
-.service-link {
-    display: inline-block;
-    color: #2563eb;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    background: #eff6ff;
-    border-radius: 6px;
-    transition: all 0.3s;
-    width: 100%;
-}
-
-.service-link:hover {
-    background: #2563eb;
+/* LinkedIn Button */
+.social-btn.linkedin {
+    background: #0077b5;
     color: white;
-    transform: translateX(5px);
 }
 
-.btn-live {
-    display: inline-block;
-    background: #2563eb;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-}
-
-.btn-live:hover {
-    background: #1d4ed8;
+.social-btn.linkedin:hover {
+    background: #005885;
     transform: translateY(-2px);
 }
 
-/* Social Links */
-.social-links {
+/* ResearchGate Button */
+.social-btn.researchgate {
+    background: #00ccbb;
+    color: white;
+}
+
+.social-btn.researchgate:hover {
+    background: #00a899;
+    transform: translateY(-2px);
+}
+
+/* Professional Links Section */
+.professional-links {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.links-note {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.cred-links {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin: 2rem 0;
-    flex-wrap: wrap;
-}
-
-.social-btn {
-    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-    border: 2px solid transparent;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
 }
 
-.social-btn.github {
-    background: #0f172a;
-    color: white;
-}
-
-.social-btn.github:hover {
-    background: #1e293b;
-    transform: translateY(-2px);
-}
-
-.social-btn.docker {
-    background: #0db7ed;
-    color: white;
-}
-
-.social-btn.docker:hover {
-    background: #0899c4;
-    transform: translateY(-2px);
-}
-
-.social-btn.email {
-    background: white;
-    color: #0f172a;
-    border-color: #cbd5e1;
-}
-
-.social-btn.email:hover {
-    border-color: #2563eb;
+.cred-links a {
     color: #2563eb;
-    transform: translateY(-2px);
-}
-
-/* Footer Links */
-.footer-links {
-    margin-top: 0.5rem;
-}
-
-.footer-links a {
-    color: #94a3b8;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.footer-links a:hover {
-    color: white;
+.cred-links a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
 }
 
-/* Featured Project Card */
-.project-card.featured {
-    border: 2px solid #2563eb;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
-}
-
-.project-card.featured:hover {
-    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.2);
+.separator {
+    color: #cbd5e1;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .social-links {
+    .cred-links {
         flex-direction: column;
+        gap: 0.75rem;
     }
     
-    .social-btn {
-        width: 100%;
-        justify-content: center;
+    .separator {
+        display: none;
     }
 }
